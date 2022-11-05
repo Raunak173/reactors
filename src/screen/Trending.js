@@ -48,7 +48,7 @@ const Trending = () => {
   useEffect(() => {
     axios
       .get(
-        `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=${50}&regionCode=IN&key=AIzaSyCX2d8mhLkPzQoOARxvOMlGWYKLuCSnd1o`
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=${20}&regionCode=IN&key=AIzaSyCX2d8mhLkPzQoOARxvOMlGWYKLuCSnd1o`
       )
       .then((response) => {
         console.log(response.data.items);
@@ -59,7 +59,7 @@ const Trending = () => {
       });
   }, []);
   return (
-    <div className="flex flex-wrap gap-x-3 gap-y-3 px-10 pt-10">
+    <div className="flex flex-wrap gap-5 mx-auto px-10 pt-10 items-center justify-center">
        {/* ? <Skeleton width={22} height={22} /> */}
       { isLoading
         ? 

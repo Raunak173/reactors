@@ -6,6 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 const Header = ({ sQuery, setSQuery }) => {
   const navigate = useNavigate();
+  const [text, setText] = useState("");
+
   return (
     <div className="h-[56px] flex bg-black items-center px-7 justify-between">
       <div className="flex items-center">
@@ -21,12 +23,22 @@ const Header = ({ sQuery, setSQuery }) => {
         </button>
         <button className="text-white">Creators</button>
       </div>
-      <img src={search} className="absolute right-72 h-[20px]" />
-      <input
-        className="h-[30xp] bg-white w-[300px] py-1 rounded-xl pl-12"
+      <div className="flex">
+        <input
+          className="h-[30xp] bg-white w-[300px] py-1 rounded-xl pl-12 outline-none"
+          type="text"
+          id="input-box"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        />
+        <span className="flex items-center justify-center" onClick={() => navigate(`search/${text}`)}>
+          <img src={search} className="absolute right-72 h-[20px]" />
+        </span>
+      </div>
+      {/* <input
         value={sQuery}
         onChange={(e) => setSQuery(e.target.value)}
-      />
+      /> */}
     </div>
   );
 };
