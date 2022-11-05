@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React from "react";
+import React, { useState } from "react";
 import yt from "../assets/youtube.png";
 import search from "../assets/search.png";
 import { useNavigate } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ sQuery, setSQuery }) => {
   const navigate = useNavigate();
   return (
     <div className="h-[56px] flex bg-black items-center px-7 justify-between">
@@ -22,7 +22,11 @@ const Header = () => {
         <button className="text-white">Creators</button>
       </div>
       <img src={search} className="absolute right-72 h-[20px]" />
-      <input className="h-[30xp] bg-white w-[300px] py-1 rounded-xl pl-12" />
+      <input
+        className="h-[30xp] bg-white w-[300px] py-1 rounded-xl pl-12"
+        value={sQuery}
+        onChange={(e) => setSQuery(e.target.value)}
+      />
     </div>
   );
 };

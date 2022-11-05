@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import thumb from "../assets/thumbnail.png";
 import VideoCard from "../components/VideoCard";
 
-const Trending = () => {
+const Home = ({ sQuery, setSQuery }) => {
   const [videoCards, setVideoCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -41,7 +40,7 @@ const Trending = () => {
   useEffect(() => {
     axios
       .get(
-        `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=AIzaSyCX2d8mhLkPzQoOARxvOMlGWYKLuCSnd1o`
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&type=video&q=${sQuery}&safeSearch=none&key=AIzaSyCX2d8mhLkPzQoOARxvOMlGWYKLuCSnd1o`
       )
       .then((response) => {
         console.log(response.data.items);
@@ -50,7 +49,7 @@ const Trending = () => {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [sQuery]);
 
   return (
     <div className="flex flex-wrap gap-x-3 gap-y-3 px-10 pt-10">
@@ -70,4 +69,4 @@ const Trending = () => {
   );
 };
 
-export default Trending;
+export default Home;
