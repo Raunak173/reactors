@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from "react";
+import Skeleton from "react-loading-skeleton";
 
 const VideoCard = ({
   image,
@@ -8,10 +9,12 @@ const VideoCard = ({
   views,
   //   timestamp,
   channelImage,
+  isLoading,
 }) => {
   return (
     <div className="w-[276px] h-[247px] bg-black">
-      <img src={image} />
+      {isLoading ? "Loading...": <img src={image} />}
+      
     </div>
   );
 };

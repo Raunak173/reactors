@@ -2,11 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import thumb from "../assets/thumbnail.png";
 import VideoCard from "../components/VideoCard";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Trending = () => {
   const [videoCards, setVideoCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+
+  const faltuArray = Array.from(Array(50).keys())
 
   async function createVideoCards(videoItems) {
     let newVideoCards = [];
@@ -18,6 +22,7 @@ const Trending = () => {
         `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=AIzaSyCX2d8mhLkPzQoOARxvOMlGWYKLuCSnd1o`
       );
       const channelImage = response.data.items[0].snippet.thumbnails.medium.url;
+      // let totalVideos = 50; 
 
       const title = snippet.title;
       const image = snippet.thumbnails.medium.url;
@@ -38,10 +43,12 @@ const Trending = () => {
     setVideoCards(newVideoCards);
     setIsLoading(false);
   }
+
+  console.log(isLoading)
   useEffect(() => {
     axios
       .get(
-        `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=IN&key=AIzaSyCX2d8mhLkPzQoOARxvOMlGWYKLuCSnd1o`
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=${50}&regionCode=IN&key=AIzaSyCX2d8mhLkPzQoOARxvOMlGWYKLuCSnd1o`
       )
       .then((response) => {
         console.log(response.data.items);
@@ -51,10 +58,14 @@ const Trending = () => {
         console.log(error);
       });
   }, []);
-
   return (
     <div className="flex flex-wrap gap-x-3 gap-y-3 px-10 pt-10">
-      {videoCards.map((item) => (
+       {/* ? <Skeleton width={22} height={22} /> */}
+      { isLoading
+        ? 
+        faltuArray.map(el => <Skeleton width={276} height={247} />)
+       :
+      videoCards.map((item) => (
         <VideoCard
           key={item.videoId}
           title={item.title}
@@ -63,6 +74,8 @@ const Trending = () => {
           // timestamp={item.timestamp}
           channel={item.channel}
           channelImage={item.channelImage}
+          isLoading={isLoading}
+          setIsLoading={setIsLoading}
         />
       ))}
     </div>
