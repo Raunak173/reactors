@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import VideoCard from "../components/VideoCard";
+import Skeleton from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 const Home = ({ sQuery, setSQuery }) => {
   const [videoCards, setVideoCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
+  const faltuArray = Array.from(Array(50).keys())
 
   async function createVideoCards(videoItems) {
     let newVideoCards = [];
@@ -53,7 +56,11 @@ const Home = ({ sQuery, setSQuery }) => {
 
   return (
     <div className="flex flex-wrap gap-x-3 gap-y-3 px-10 pt-10">
-      {videoCards.map((item) => (
+      {
+        isLoading ? 
+        faltuArray.map(el => <Skeleton width={276} height={247} />)
+        :
+        videoCards.map((item) => (
         <VideoCard
           key={item.videoId}
           title={item.title}
