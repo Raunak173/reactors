@@ -1,3 +1,32 @@
+# Team Name
+Reacters
+
+# Team ID
+628
+
+# Team Members
+
+[Prakhar Tandon](https://github.com/prakhart111), [Raunak Agarwal](https://github.com/Raunak173), [Harsh Prajapati](https://github.com/glitch) and [Mukul Dubey](https://github.com/mukul1312)
+
+# Problem Statement
+
+Creators face a lot of issues today despite of the booming creator economy. We are using the power of Web3 to equip them with more powerful tools, so that they can grow and produce content seamlessly.
+
+* Lack of Funds
+* Revenues heavily rely on advertisements only,
+* Heavy Platform Dependence, 
+* Lack of proper bi-directional communication with audience.
+
+We'll allow creators to sell their memberships NFTs to the users in order to connect with them and raise funds as well.
+
+This also acts as a investment media for the viewers.
+
+# Tech stack: 
+
+* React 
+* Solidity
+* Sepolia Testnet
+ 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
