@@ -20,7 +20,6 @@ const App = () => {
           <Route path="/search/:searchQuery" element={<SearchPage />} />
           <Route path="/creator/:id" element={<Creator />} />
           <Route path="/channel" element={<Channel />} />
-          {/* <Route path='/search/:searchQuery' element={<SearchPage  />} /> */}
         </Routes>
       </BrowserRouter>
     </Provider>
