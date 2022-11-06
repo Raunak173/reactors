@@ -1,3 +1,8 @@
+# Problem Statement
+
+Creators face a lot of issues today despite of the booming creator economy. We are using the power of Web3 to equip them with more powerful tools, so that they can grow and produce content seamlessly.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
