@@ -12,7 +12,7 @@ const Creator = () => {
       .get(
         `https://www.googleapis.com/youtube/v3/channels?part=snippet%2Cstatistics&id=${location.state.channelId}&key=AIzaSyDUHTYscvTDbH-fGco4eda3QrBzTYrlfp8`
       )
-      .then((res) => setData(res.data.items[0]))
+      .then((res) => setData(res.data?.items[0]))
       .catch((err) => console.log(err));
   };
   useEffect(() => {
@@ -30,16 +30,16 @@ const Creator = () => {
               {location.state.channel}
             </p>
             <p className="text-white text-center">
-              {data.statistics.viewCount} views
+              {data?.statistics?.viewCount} views
             </p>
             <p className="text-red-800 text-lg ml-5 text-center">
-              {data.statistics.subscriberCount} subscribers
+              {data?.statistics?.subscriberCount} subscribers
             </p>
           </div>
         </div>
         <NFTCont />
       </div>
-      <p>{data.snippet.description}</p>
+      <p>{data?.snippet?.description}</p>
     </div>
   );
 };
