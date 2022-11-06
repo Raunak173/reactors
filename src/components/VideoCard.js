@@ -27,9 +27,11 @@ const VideoCard = ({ image, title, channel, views, channelImage, vid }) => {
         <button
           onClick={() =>
             navigate(`/creator/${vid}`, {
-              image: image,
-              vid: vid,
-              title: title,
+              state: {
+                image: image,
+                vid: vid,
+                title: title,
+              },
             })
           }
         >
