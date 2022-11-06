@@ -4,23 +4,23 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Trending from "./screen/Trending";
 import Home from "./screen/Home";
 import SearchPage from "./pages/SearchPage";
+import { Provider } from "react-redux";
+import { store } from "./store";
+import Creator from "./screen/Creator";
 
 const App = () => {
-  const [sQuery, setSQuery] = useState("");
   return (
-    <>
+    <Provider store={store}>
       <BrowserRouter>
-        <Header sQuery={sQuery} setSQuery={setSQuery} />
+        <Header />
         <Routes>
-          <Route
-            path="/"
-            element={<Home sQuery={sQuery} setSQuery={setSQuery} />}
-          />
+          <Route path="/" element={<Home />} />
           <Route path="/trend" element={<Trending />} />
-          <Route path='/search/:searchQuery' element={<SearchPage sQuery={sQuery} />} />
+          <Route path="/search/:searchQuery" element={<SearchPage />} />
+          <Route path="/creator/:id" element={<Creator />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </Provider>
   );
 };
 

@@ -3,10 +3,21 @@ import React, { useState } from "react";
 import yt from "../assets/youtube.png";
 import search from "../assets/search.png";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { selectQuery, setQuery } from "../redux/videoSlice";
 
-const Header = ({ sQuery, setSQuery }) => {
+const Header = () => {
   const navigate = useNavigate();
-  const [text, setText] = useState("");
+  const query = useSelector(selectQuery);
+  const [text, setText] = useState(query);
+  const dispatch = useDispatch();
+
+  const onKeyDownHandler = (e) => {
+    if (e.keyCode === 13) {
+      dispatch(setQuery(text));
+      window.location.reload(true);
+    }
+  };
 
   return (
     <div className="h-[56px] flex bg-black items-center px-7 justify-between">
@@ -21,7 +32,9 @@ const Header = ({ sQuery, setSQuery }) => {
         <button className="text-white" onClick={() => navigate("/trend")}>
           Trending
         </button>
-        <button className="text-white">Creators</button>
+        <button className="text-white" onClick={() => navigate("/creator")}>
+          Creators
+        </button>
       </div>
       <div className="flex">
         <input
@@ -30,15 +43,15 @@ const Header = ({ sQuery, setSQuery }) => {
           id="input-box"
           value={text}
           onChange={(e) => setText(e.target.value)}
+          onKeyDown={onKeyDownHandler}
         />
-        <span className="flex items-center justify-center" onClick={() => navigate(`search/${text}`)}>
+        <span
+          className="flex items-center justify-center"
+          onClick={() => navigate(`search/${text}`)}
+        >
           <img src={search} className="absolute right-72 h-[20px]" />
         </span>
       </div>
-      {/* <input
-        value={sQuery}
-        onChange={(e) => setSQuery(e.target.value)}
-      /> */}
     </div>
   );
 };
