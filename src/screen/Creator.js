@@ -1,7 +1,7 @@
 import React from "react";
 
 const Creator = () => {
-  return <div>Creator</div>;
+  return <div></div>;
 };
 
 export default Creator;

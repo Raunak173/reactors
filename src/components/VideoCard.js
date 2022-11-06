@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
 import avatar from "../assets/avatar.png";
 
 const VideoCard = ({ image, title, channel, views, channelImage, vid }) => {
-  console.log(channelImage);
+  const navigate = useNavigate();
   return (
     <div
       className="flex flex-col justify-between w-[276px] min-h-[300px] bg-black rounded-xl"
@@ -22,7 +24,17 @@ const VideoCard = ({ image, title, channel, views, channelImage, vid }) => {
         {title}
       </h1>
       <div className="flex-end p-2 rounded-b-xl mt-2 flex justify-center items-center pb-3">
-        <img src={avatar} width="17%" />
+        <button
+          onClick={() =>
+            navigate(`/creator/${vid}`, {
+              image: image,
+              vid: vid,
+              title: title,
+            })
+          }
+        >
+          <img src={avatar} />
+        </button>
         <span className="text-white text-left w-full ml-1 truncate px-1">
           {channel}
         </span>
