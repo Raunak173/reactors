@@ -1,9 +1,8 @@
-/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
-import Skeleton from "react-loading-skeleton";
 import avatar from "../assets/avatar.png";
 
 const VideoCard = ({ image, title, channel, views, channelImage, vid }) => {
+  console.log(channelImage);
   return (
     <div
       className="flex flex-col justify-between w-[276px] min-h-[300px] bg-black rounded-xl"

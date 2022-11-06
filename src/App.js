@@ -7,6 +7,7 @@ import SearchPage from "./pages/SearchPage";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import Creator from "./screen/Creator";
+import Channel from "./screen/Channel";
 
 const App = () => {
   return (
@@ -18,6 +19,8 @@ const App = () => {
           <Route path="/trend" element={<Trending />} />
           <Route path="/search/:searchQuery" element={<SearchPage />} />
           <Route path="/creator/:id" element={<Creator />} />
+          <Route path="/channel" element={<Channel />} />
+          {/* <Route path='/search/:searchQuery' element={<SearchPage  />} /> */}
         </Routes>
       </BrowserRouter>
     </Provider>
