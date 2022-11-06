@@ -3,7 +3,15 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import avatar from "../assets/avatar.png";
 
-const VideoCard = ({ image, title, channel, views, channelImage, vid }) => {
+const VideoCard = ({
+  image,
+  title,
+  channel,
+  views,
+  channelImage,
+  vid,
+  channelId,
+}) => {
   const navigate = useNavigate();
   return (
     <div
@@ -31,6 +39,10 @@ const VideoCard = ({ image, title, channel, views, channelImage, vid }) => {
                 image: image,
                 vid: vid,
                 title: title,
+                channel: channel,
+                channelImage: channelImage,
+                views: views,
+                channelId: channelId,
               },
             })
           }

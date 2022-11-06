@@ -20,7 +20,7 @@ const Home = () => {
       const snippet = video.snippet;
       const channelId = snippet.channelId;
       const response = await axios.get(
-        `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=AIzaSyDY3Em-6coHYcrpViMYUbp_oX6ZhkaQOUo`
+        `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=AIzaSyDUHTYscvTDbH-fGco4eda3QrBzTYrlfp8`
       );
       const channelImage = response.data.items[0].snippet.thumbnails.medium.url;
 
@@ -38,6 +38,7 @@ const Home = () => {
         views,
         // timestamp,
         channelImage,
+        channelId,
       });
     }
     setVideoCards(newVideoCards);
@@ -46,7 +47,7 @@ const Home = () => {
   useEffect(() => {
     axios
       .get(
-        `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&type=video&q=${query}&safeSearch=none&key=AIzaSyDY3Em-6coHYcrpViMYUbp_oX6ZhkaQOUo`
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&type=video&q=${query}&safeSearch=none&key=AIzaSyDUHTYscvTDbH-fGco4eda3QrBzTYrlfp8`
       )
       .then((response) => {
         console.log(response.data.items);
@@ -58,7 +59,7 @@ const Home = () => {
   }, [query]);
 
   return (
-    <div className="flex flex-wrap gap-x-3 gap-y-3 px-10 pt-10">
+    <div className="flex flex-wrap gap-x-3 gap-y-3 px-10 pt-10 bg-gray-400 pb-10">
       {isLoading
         ? faltuArray.map((el) => <Skeleton width={276} height={247} />)
         : videoCards.map((item) => (
@@ -71,6 +72,7 @@ const Home = () => {
               channel={item.channel}
               channelImage={item.channelImage}
               vid={item.videoId}
+              channelId={item.channelId}
             />
           ))}
     </div>

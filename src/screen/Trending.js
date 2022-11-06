@@ -19,7 +19,7 @@ const Trending = () => {
       const snippet = video.snippet;
       const channelId = snippet.channelId;
       const response = await axios.get(
-        `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=AIzaSyDY3Em-6coHYcrpViMYUbp_oX6ZhkaQOUo`
+        `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=AIzaSyDUHTYscvTDbH-fGco4eda3QrBzTYrlfp8`
       );
       const channelImage = response.data.items[0].snippet.thumbnails.medium.url;
       // let totalVideos = 50;
@@ -44,11 +44,10 @@ const Trending = () => {
     setIsLoading(false);
   }
 
-  console.log(isLoading);
   useEffect(() => {
     axios
       .get(
-        `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=${20}&regionCode=IN&key=AIzaSyDY3Em-6coHYcrpViMYUbp_oX6ZhkaQOUo`
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=${20}&regionCode=IN&key=AIzaSyDUHTYscvTDbH-fGco4eda3QrBzTYrlfp8`
       )
       .then((response) => {
         console.log(response.data.items);
@@ -59,7 +58,7 @@ const Trending = () => {
       });
   }, []);
   return (
-    <div className="flex flex-wrap gap-5 mx-auto px-10 pt-10 items-center justify-center">
+    <div className="flex flex-wrap gap-x-3 gap-y-3 px-10 pt-10 bg-gray-400 pb-10">
       {/* ? <Skeleton width={22} height={22} /> */}
       {isLoading
         ? faltuArray.map((el) => <Skeleton width={276} height={247} />)
