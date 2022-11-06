@@ -32,9 +32,6 @@ const Header = () => {
         <button className="text-white" onClick={() => navigate("/trend")}>
           Trending
         </button>
-        <button className="text-white" onClick={() => navigate("/creator")}>
-          Creators
-        </button>
       </div>
       <div className="flex">
         <input
